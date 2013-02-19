@@ -110,8 +110,9 @@ angular.module('sample', ['ui.compat'])
           url: '/{contactId}',
           resolve: {
             something:
-              [        '$timeout',
-              function ($timeout) {
+              [        '$timeout', '$log', '$stateParams',
+              function ($timeout, $log, $stateParams) {
+                $log.log('$stateParams', $stateParams);
                 return $timeout(function () { return "Asynchronously resolved data" }, 10);
               }],
           },
